@@ -1,0 +1,26 @@
+@import 'colors';
+@import 'overrides';
+.bg_first {
+  background-color: $myfood_first_color;
+}
+.bg_second {
+  background-color: $myfood_second_color;
+}
+.bg_third {
+  background-color: $myfood_third_color;
+}
+.bg_white {
+  background-color: white;
+}
+
+.color_first {
+  color: $myfood_first_color;
+}
+
+.color_second {
+  color: $myfood_second_color;
+}
+
+.color_white {
+  color: white;
+}

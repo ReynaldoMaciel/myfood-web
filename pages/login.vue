@@ -1,40 +1,50 @@
 <template>
   <div class="Login">
-    <section class="hero is-fullheight is-medium is-primary is-bold">
+    <section class="hero is-fullheight is-medium gradient_login">
       <div class="hero-body">
         <div class="container">
           <div class="columns is-centered">
-            <article class="card is-rounded">
-              <div class="card-content">
-                <h1 class="title">
-                  <!-- <img
-                    src="https://placeholdit.imgix.net/~text?txtsize=13&txt=150%C3%9750&w=150&h=50"
-                    alt="logo"
-                    width="200"
-                  /> -->
-                </h1>
-                <p class="control has-icon">
+            <div class="column is-two-thirds-tablet is-one-third-desktop">
+              <h1 class="title">
+                <img
+                  src="~assets/buefy.png"
+                  alt="Buefy"
+                  height="28"
+                  width="200"
+                />
+              </h1>
+              <div class="box">
+                <label class="label">Email</label>
+                <div class="control has-icon">
                   <input class="input" type="email" placeholder="Email" />
                   <i class="fa fa-envelope" />
-                </p>
-                <p class="control has-icon">
-                  <input class="input" type="password" placeholder="Password" />
+                </div>
+                <br />
+                <label class="label">Senha</label>
+                <div class="control has-icon">
+                  <input class="input" type="password" placeholder="Senha" />
                   <i class="fa fa-lock" />
-                </p>
-                <p class="control">
-                  <label class="checkbox">
-                    <input type="checkbox" />
-                    Remember me
-                  </label>
-                </p>
-                <p class="control">
-                  <button class="button is-primary is-medium is-fullwidth">
-                    <i class="fa fa-user" />
+                </div>
+                <br />
+                <div class="control">
+                  <button
+                    class="button is-medium is-fullwidth bg_first color_white is-rounded"
+                  >
                     Login
                   </button>
-                </p>
+                  <br />
+                  <nuxt-link
+                    :to="{ name: 'login' }"
+                    class="buttons is-centered"
+                  >
+                    <div class="button is-danger is-small is-outlined">
+                      Não possuo conta
+                    </div>
+                  </nuxt-link>
+                </div>
               </div>
-            </article>
+              <br />
+            </div>
           </div>
         </div>
       </div>
@@ -48,3 +58,13 @@ export default {
   name: 'Login'
 }
 </script>
+
+<style lang="scss" scoped>
+.gradient_login {
+  background-image: linear-gradient(
+    to top left,
+    darken($myfood_second_color, 10%),
+    lighten($myfood_second_color, 10%)
+  );
+}
+</style>

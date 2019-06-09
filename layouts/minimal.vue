@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav
-      class="navbar header is-primary"
+      class="navbar header bg_first"
       role="navigation"
       aria-label="main navigation"
     >
@@ -11,9 +11,9 @@
         </a>
 
         <div class="navbar-burger">
-          <span />
-          <span />
-          <span />
+          <span class="bg_white" />
+          <span class="bg_white" />
+          <span class="bg_white" />
         </div>
       </div>
     </nav>
@@ -46,3 +46,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.navbar-burger span {
+  background-color: white;
+}
+</style>

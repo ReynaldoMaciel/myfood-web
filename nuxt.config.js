@@ -23,7 +23,7 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['@/assets/scss/main.scss'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -36,6 +36,7 @@ module.exports = {
     'nuxt-buefy',
     '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
+    // Font Awesome
     [
       'nuxt-fontawesome',
       {
@@ -50,8 +51,13 @@ module.exports = {
           }
         ]
       }
-    ]
+    ],
+    // Nuxt
+    '@nuxtjs/style-resources'
   ],
+  styleResources: {
+    scss: ['assets/scss/main.scss', 'assets/scss/colors.scss']
+  },
   /*
    ** Build configuration
    */
