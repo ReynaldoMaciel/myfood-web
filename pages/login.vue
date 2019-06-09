@@ -7,11 +7,11 @@
             <article class="card is-rounded">
               <div class="card-content">
                 <h1 class="title">
-                  <img
+                  <!-- <img
                     src="https://placeholdit.imgix.net/~text?txtsize=13&txt=150%C3%9750&w=150&h=50"
                     alt="logo"
                     width="200"
-                  />
+                  /> -->
                 </h1>
                 <p class="control has-icon">
                   <input class="input" type="email" placeholder="Email" />
@@ -44,6 +44,7 @@
 
 <script>
 export default {
+  layout: 'minimal',
   name: 'Login'
 }
 </script>
