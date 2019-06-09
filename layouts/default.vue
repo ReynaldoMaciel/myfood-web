@@ -32,6 +32,13 @@
           </li>
         </ul>
       </aside>
+      <!-- <div class="container column is-10">
+        <p>Icons</p>
+        <font-awesome-icon :icon="['fab', 'linkedin']" />
+        <font-awesome-icon :icon="['fab', 'github']" />
+        <font-awesome-icon :icon="['fab', 'facebook']" />
+        <font-awesome-icon :icon="['fas', 'coffee']" />
+      </div> -->
 
       <div class="container column is-10">
         <nuxt />
