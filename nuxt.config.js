@@ -36,6 +36,8 @@ module.exports = {
     'nuxt-buefy',
     '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
+    // CSS files
+    '@nuxtjs/style-resources',
     // Font Awesome
     [
       'nuxt-fontawesome',
@@ -52,19 +54,20 @@ module.exports = {
         ]
       }
     ],
-    // Nuxt
-    '@nuxtjs/style-resources'
+    // Nuxt + Vee Validate
+    [
+      'nuxt-validate',
+      {
+        lang: 'pt_BR'
+        // regular vee-validate options
+      }
+    ]
   ],
+  // Watch files scss
   styleResources: {
     scss: ['assets/scss/main.scss', 'assets/scss/colors.scss']
   },
-  /*
-   ** Build configuration
-   */
   build: {
-    /*
-     ** You can extend webpack config here
-     */
     extend(config, ctx) {}
   }
 }

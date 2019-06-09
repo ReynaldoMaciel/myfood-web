@@ -14,17 +14,34 @@
                 />
               </h1>
               <div class="box">
-                <label class="label">Email</label>
-                <div class="control has-icon">
-                  <input class="input" type="email" placeholder="Email" />
-                  <i class="fa fa-envelope" />
-                </div>
-                <br />
-                <label class="label">Senha</label>
-                <div class="control has-icon">
-                  <input class="input" type="password" placeholder="Senha" />
-                  <i class="fa fa-lock" />
-                </div>
+                <b-field
+                  label="Email"
+                  :type="errors.first('email') ? 'is-danger' : ''"
+                  :message="errors.first('email')"
+                >
+                  <b-input
+                    v-validate="'required|email'"
+                    placeholder="Email"
+                    icon="email"
+                    name="email"
+                  >
+                  </b-input>
+                </b-field>
+                <b-field
+                  label="Senha"
+                  :type="errors.first('senha') ? 'is-danger' : ''"
+                  :message="errors.first('senha')"
+                >
+                  <b-input
+                    v-validate="'required|min:8'"
+                    placeholder="Senha"
+                    type="password"
+                    icon="lock"
+                    name="senha"
+                    password-reveal
+                  >
+                  </b-input>
+                </b-field>
                 <br />
                 <div class="control">
                   <button
