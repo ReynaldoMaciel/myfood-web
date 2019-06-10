@@ -46,6 +46,7 @@
                 <div class="control">
                   <button
                     class="button is-medium is-fullwidth bg_first color_white is-rounded"
+                    @click="authenticate"
                   >
                     Login
                   </button>
@@ -72,16 +73,34 @@
 <script>
 export default {
   layout: 'minimal',
-  name: 'Login'
+  name: 'Login',
+  methods: {
+    authenticate() {
+      try {
+        this.$validator
+          .validateAll()
+          .then(result => {
+            if (!result) {
+              this.$dialog.alert('Everything looks fine!')
+            }
+          })
+          .catch(err => {
+            console.log(err.message ? err.message : 'Erro ao efetuar login')
+          })
+      } catch (error) {
+        alert(error)
+      }
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .gradient_login {
   background-image: linear-gradient(
-    to top left,
-    darken($myfood_second_color, 10%),
-    lighten($myfood_second_color, 10%)
+    to top,
+    lighten($myfood_first_color, 40%),
+    darken($myfood_first_color, 10%)
   );
 }
 </style>
