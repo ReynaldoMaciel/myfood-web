@@ -1,5 +1,5 @@
 module.exports = {
-  mode: 'universal',
+  mode: 'spa',
   /*
    ** Headers of the page
    */
@@ -27,7 +27,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/vue-swal'],
   /*
    ** Nuxt.js modules
    */
@@ -36,6 +36,8 @@ module.exports = {
     'nuxt-buefy',
     '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
+    // Axios
+    '@nuxtjs/axios',
     // CSS files
     '@nuxtjs/style-resources',
     // Font Awesome

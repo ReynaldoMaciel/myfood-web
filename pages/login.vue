@@ -52,7 +52,7 @@
                   </button>
                   <br />
                   <nuxt-link
-                    :to="{ name: 'login' }"
+                    :to="{ name: 'cadastro' }"
                     class="buttons is-centered"
                   >
                     <div class="button is-danger is-small is-outlined">
@@ -81,7 +81,13 @@ export default {
           .validateAll()
           .then(result => {
             if (!result) {
-              this.$dialog.alert('Everything looks fine!')
+              this.$toast.open({
+                duration: 5000,
+                message:
+                  'Preencha corretamente todos os campos antes de prosseguir',
+                position: 'is-bottom',
+                type: 'is-danger'
+              })
             }
           })
           .catch(err => {
@@ -94,13 +100,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.gradient_login {
-  background-image: linear-gradient(
-    to top,
-    lighten($myfood_first_color, 40%),
-    darken($myfood_first_color, 10%)
-  );
-}
-</style>

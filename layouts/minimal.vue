@@ -1,10 +1,6 @@
 <template>
-  <div>
-    <nav
-      class="navbar header bg_first"
-      role="navigation"
-      aria-label="main navigation"
-    >
+  <div style="width:100%;">
+    <nav class="navbar bg_first" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
           <img src="~assets/buefy.png" alt="Buefy" height="28" />
@@ -17,7 +13,9 @@
         </div>
       </div>
     </nav>
-    <nuxt />
+    <div class="gradient_login">
+      <nuxt />
+    </div>
   </div>
 </template>
 
@@ -50,5 +48,18 @@ export default {
 <style lang="scss">
 .navbar-burger span {
   background-color: white;
+}
+.navbar {
+  position: sticky;
+  top: 0px;
+}
+.gradient_login {
+  display: block;
+  min-height: 700px;
+  background-image: linear-gradient(
+    to bottom,
+    darken($myfood_first_color, 10%),
+    lighten($myfood_first_color, 30%)
+  );
 }
 </style>
