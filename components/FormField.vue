@@ -6,9 +6,10 @@
       :message="errors.first(identifier)"
     >
       <b-input
+        v-if="type === 'text' || type === 'password'"
         :ref="identifier"
+        v-model="model"
         v-validate="validations"
-        :value="baseState[identifier]"
         autocomplete="off"
         :placeholder="placeholder"
         :type="type"
@@ -17,10 +18,42 @@
         :name="identifier"
         :disabled="disabled"
         :loading="loading"
-        @keyup.native="changeValue"
+        :use-html5-validation="false"
         @blur="onFocusOut"
       >
       </b-input>
+      <b-select
+        v-if="type === 'select'"
+        v-model="model"
+        :placeholder="placeholder"
+        expanded
+      >
+        <option
+          v-for="option in options"
+          :key="option.value"
+          :value="option.value"
+        >
+          {{ option.label }}
+        </option>
+      </b-select>
+      <b-autocomplete
+        v-if="type === 'autocomplete'"
+        v-model="model"
+        :data="options"
+        :placeholder="placeholder"
+        :icon="icon"
+        :loading="loading"
+        @typing="typing"
+        @select="option => (selected = option)"
+      >
+        <template slot-scope="props">
+          <div class="media">
+            {{ props.option.localidade }}
+            <br />
+          </div>
+        </template>
+        <template slot="empty">{{ noResultsMessage }}</template>
+      </b-autocomplete>
     </b-field>
   </div>
 </template>
@@ -30,6 +63,7 @@ import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'FormField',
+  inject: ['$validator'],
   props: {
     identifier: {
       type: String,
@@ -63,10 +97,11 @@ export default {
       type: Boolean,
       default: false
     },
-    // onChangeValue: {
-    //   type: Function,
-    //   default: () => {}
-    // },
+    validChars: {
+      type: RegExp,
+      required: false,
+      default: () => /a-z/g
+    },
     onFocusOut: {
       type: Function,
       default: () => {}
@@ -78,12 +113,32 @@ export default {
     loading: {
       type: Boolean,
       default: false
+    },
+    typing: {
+      type: Function,
+      default: () => {}
+    },
+    options: {
+      type: Array,
+      default: () => []
+    },
+    noResultsMessage: {
+      type: String,
+      default: 'Nenhum registro encontrado'
     }
   },
   computed: {
     ...mapState({
       baseState: state => state.baseModule.baseState
-    })
+    }),
+    model: {
+      get: function() {
+        return this.baseState[this.identifier]
+      },
+      set: function(value) {
+        this.updateAttribute({ key: this.identifier, value })
+      }
+    }
   },
   methods: {
     ...mapActions({
@@ -94,13 +149,6 @@ export default {
       const strCleared = str.match(regex, '')
       if (!strCleared) return ''
       return strCleared.join('')
-    },
-    changeValue(e) {
-      const value = e.target.value
-      this.updateAttribute({
-        key: this.identifier,
-        value: value
-      })
     }
   }
 }

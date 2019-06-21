@@ -56,10 +56,11 @@ export default {
 .gradient_login {
   display: block;
   min-height: 700px;
-  background-image: linear-gradient(
-    to bottom,
-    darken($myfood_first_color, 10%),
-    lighten($myfood_first_color, 30%)
-  );
+  background-color: white;
+  // background-image: linear-gradient(
+  //   to bottom,
+  //   darken($myfood_first_color, 10%),
+  //   lighten($myfood_first_color, 30%)
+  // );
 }
 </style>

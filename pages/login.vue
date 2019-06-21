@@ -1,18 +1,15 @@
 <template>
   <div class="Login">
-    <section class="hero is-fullheight is-medium gradient_login">
+    <section class="hero is-fullheight is-medium">
       <div class="hero-body">
         <div class="container">
+          <div class="column has-text-centered">
+            <h1 class="is-size-4 has-text-weight-bold">
+              Login
+            </h1>
+          </div>
           <div class="columns is-centered">
             <div class="column is-two-thirds-tablet is-one-third-desktop">
-              <h1 class="title">
-                <img
-                  src="~assets/buefy.png"
-                  alt="Buefy"
-                  height="28"
-                  width="200"
-                />
-              </h1>
               <div class="box">
                 <b-field
                   label="Email"
@@ -20,6 +17,7 @@
                   :message="errors.first('email')"
                 >
                   <b-input
+                    v-model="email"
                     v-validate="'required|email'"
                     placeholder="Email"
                     icon="email"
@@ -33,11 +31,13 @@
                   :message="errors.first('senha')"
                 >
                   <b-input
+                    v-model="senha"
                     v-validate="'required|min:8'"
                     placeholder="Senha"
                     type="password"
                     icon="lock"
                     name="senha"
+                    :use-html5-validation="false"
                     password-reveal
                   >
                   </b-input>
@@ -74,27 +74,28 @@
 export default {
   layout: 'minimal',
   name: 'Login',
+  data() {
+    return {
+      email: '',
+      senha: ''
+    }
+  },
   methods: {
     authenticate() {
       try {
-        this.$validator
-          .validateAll()
-          .then(result => {
-            if (!result) {
-              this.$toast.open({
-                duration: 5000,
-                message:
-                  'Preencha corretamente todos os campos antes de prosseguir',
-                position: 'is-bottom',
-                type: 'is-danger'
-              })
-            }
-          })
-          .catch(err => {
-            console.log(err.message ? err.message : 'Erro ao efetuar login')
-          })
+        this.$validator.validateAll().then(validated => {
+          if (!validated) {
+            this.$toast.open({
+              duration: 5000,
+              message:
+                'Preencha corretamente todos os campos antes de prosseguir',
+              position: 'is-bottom',
+              type: 'is-danger'
+            })
+          }
+        })
       } catch (error) {
-        alert(error)
+        this.$swal('Ops..', 'Erro ao efetuar login', 'error')
       }
     }
   }

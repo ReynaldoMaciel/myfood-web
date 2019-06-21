@@ -60,7 +60,8 @@ module.exports = {
     [
       'nuxt-validate',
       {
-        lang: 'pt_BR'
+        lang: 'pt_BR',
+        mode: 'eager'
         // regular vee-validate options
       }
     ]
