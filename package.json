@@ -19,7 +19,7 @@
     "express": "^4.16.4",
     "nuxt-buefy": "^0.3.2",
     "@nuxtjs/pwa": "^2.6.0",
-    "nuxt": "^2.0.0"
+    "nuxt": "^3.4.3"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",
